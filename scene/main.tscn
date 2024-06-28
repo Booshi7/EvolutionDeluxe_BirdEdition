@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://ch0w0y8bf3uyq"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_j0u2f"]
+[ext_resource type="PackedScene" uid="uid://bvh6eotbcsupo" path="res://scene/fpscouter.tscn" id="5_xm8j4"]
+[ext_resource type="Texture2D" uid="uid://c4pi03itka8sc" path="res://img/rocher.png" id="7_ufsd5"]
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_j0u2f")
+
+[node name="fpscouter" parent="." instance=ExtResource("5_xm8j4")]
+
+[node name="Rocher" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(533, 1555)
+scale = Vector2(5, 5)
+texture = ExtResource("7_ufsd5")
+
+[node name="Everybirds" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-8368, -3056)

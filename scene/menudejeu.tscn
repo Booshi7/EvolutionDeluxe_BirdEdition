@@ -1,0 +1,173 @@
+[gd_scene load_steps=10 format=3 uid="uid://bpdy7fat2obdx"]
+
+[ext_resource type="Script" path="res://scripts/menudejeu.gd" id="1_7hnjj"]
+[ext_resource type="PackedScene" uid="uid://bvh6eotbcsupo" path="res://scene/fpscouter.tscn" id="2_k77ee"]
+[ext_resource type="FontFile" uid="uid://8yudc750wamp" path="res://HoltwoodOneSC.ttf" id="3_sbfxv"]
+[ext_resource type="Texture2D" uid="uid://uy0m6572jli0" path="res://img/oeilbarré.png" id="4_w632d"]
+[ext_resource type="Texture2D" uid="uid://defvpyvmqoyl2" path="res://img/quitferm.png" id="5_6k772"]
+[ext_resource type="Texture2D" uid="uid://doqji66e13sou" path="res://img/Evolution deluxe bird edition.png" id="7_2ssjp"]
+[ext_resource type="Texture2D" uid="uid://dpo0ahepatfs8" path="res://img/faucon taré.png" id="8_qv6ne"]
+[ext_resource type="Texture2D" uid="uid://w34s2r882lwq" path="res://img/condor zinzin.png" id="9_6nanq"]
+[ext_resource type="Texture2D" uid="uid://d1cxnghacbakq" path="res://img/rouedechargement.png" id="9_20p8s"]
+
+[node name="Menudejeu" type="Node2D"]
+script = ExtResource("1_7hnjj")
+
+[node name="fpscouter" parent="." instance=ExtResource("2_k77ee")]
+
+[node name="Everybirds" type="Node2D" parent="."]
+
+[node name="Menuprinc" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="Menuprinc"]
+layout_mode = 0
+offset_left = 1203.0
+offset_top = 25.0
+offset_right = 3550.0
+offset_bottom = 376.0
+scale = Vector2(0.245, 0.245)
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_sbfxv")
+theme_override_font_sizes/font_size = 196
+text = "1 Simulation"
+expand_icon = true
+
+[node name="Button2" type="Button" parent="Menuprinc"]
+layout_mode = 0
+offset_left = 1203.0
+offset_top = 124.0
+offset_right = 3954.0
+offset_bottom = 469.0
+scale = Vector2(0.245, 0.245)
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_sbfxv")
+theme_override_font_sizes/font_size = 196
+text = "Simulation infini"
+expand_icon = true
+
+[node name="Button3" type="Button" parent="Menuprinc"]
+texture_filter = 3
+layout_mode = 0
+offset_left = 1791.0
+offset_top = 25.0
+offset_right = 2142.0
+offset_bottom = 376.0
+scale = Vector2(0.245, 0.245)
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_sbfxv")
+theme_override_font_sizes/font_size = 196
+icon = ExtResource("4_w632d")
+expand_icon = true
+
+[node name="Label" type="Label" parent="Menuprinc"]
+layout_mode = 0
+offset_left = 2226.0
+offset_top = 125.0
+offset_right = 2334.0
+offset_bottom = 148.0
+text = "1 GEN VISIBLe"
+
+[node name="Label2" type="Label" parent="Menuprinc"]
+layout_mode = 0
+offset_left = 2239.0
+offset_top = 52.0
+offset_right = 2320.0
+offset_bottom = 75.0
+text = "ggen inifin"
+
+[node name="Label3" type="Label" parent="Menuprinc"]
+layout_mode = 0
+offset_left = 2225.0
+offset_top = 319.0
+offset_right = 2333.0
+offset_bottom = 342.0
+text = "1 SEUL OISO
+"
+
+[node name="graphiques" type="Control" parent="Menuprinc"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button4" type="Button" parent="Menuprinc"]
+texture_filter = 3
+layout_mode = 0
+offset_left = 1791.0
+offset_top = 958.0
+offset_right = 2142.0
+offset_bottom = 1309.0
+scale = Vector2(0.245, 0.245)
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_sbfxv")
+theme_override_font_sizes/font_size = 196
+icon = ExtResource("5_6k772")
+expand_icon = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Menuprinc"]
+position = Vector2(151, 99)
+rotation = -0.202458
+scale = Vector2(0.323879, 0.323879)
+texture = ExtResource("7_2ssjp")
+
+[node name="FauconTaré" type="Sprite2D" parent="Menuprinc"]
+position = Vector2(1657.79, 918.25)
+scale = Vector2(0.486466, 0.486466)
+texture = ExtResource("8_qv6ne")
+
+[node name="CondorZinzin" type="Sprite2D" parent="Menuprinc"]
+position = Vector2(1466.79, 802.25)
+scale = Vector2(0.495334, 0.495334)
+texture = ExtResource("9_6nanq")
+
+[node name="ecrannoir" type="Polygon2D" parent="."]
+position = Vector2(-10000, -10000)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-960, -540, 960, -540, 960, 540, -960, 540)
+
+[node name="time" type="Label" parent="."]
+offset_left = -10960.0
+offset_top = -10259.0
+offset_right = -9040.0
+offset_bottom = -10183.0
+theme_override_fonts/font = ExtResource("3_sbfxv")
+theme_override_font_sizes/font_size = 46
+text = "Génération en cours..."
+horizontal_alignment = 1
+
+[node name="time2" type="Label" parent="."]
+offset_left = -10960.0
+offset_top = -10180.0
+offset_right = -9040.0
+offset_bottom = -10104.0
+theme_override_fonts/font = ExtResource("3_sbfxv")
+theme_override_font_sizes/font_size = 46
+text = "testestestes"
+horizontal_alignment = 1
+
+[node name="quitalafin" type="Button" parent="."]
+visible = false
+offset_left = -10460.0
+offset_top = -9719.0
+offset_right = -9540.0
+offset_bottom = -9622.0
+theme_override_fonts/font = ExtResource("3_sbfxv")
+theme_override_font_sizes/font_size = 41
+text = "Stopper la simulation"
+
+[node name="roue" type="Sprite2D" parent="."]
+position = Vector2(-10000, -9920.32)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_20p8s")
+
+[connection signal="pressed" from="Menuprinc/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Menuprinc/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Menuprinc/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="Menuprinc/Button4" to="." method="_on_button_4_pressed"]
+[connection signal="mouse_entered" from="quitalafin" to="." method="_on_quitalafin_mouse_entered"]
+[connection signal="mouse_exited" from="quitalafin" to="." method="_on_quitalafin_mouse_exited"]
+[connection signal="pressed" from="quitalafin" to="." method="_on_quitalafin_pressed"]

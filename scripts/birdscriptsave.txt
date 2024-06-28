@@ -1,0 +1,163 @@
+extends Node2D
+@onready var body = $body
+
+var rad = randf_range(-PI, PI)
+#var rad = PI/2
+var newpoly
+var posx
+var posy
+var newsprite
+var newbody
+
+#var rad2 = 0
+var rad2 = randf_range(-PI/4, PI/4)
+var newpoly2
+var posx2
+var posy2
+var newsprite2
+var newbody2
+
+var max_ampl = 2
+var flexionspeed = 0.08
+var retourspeed = 0.05
+var isflexion = true
+var flexioncd = 0
+
+var gravity = 0
+
+var difference 
+
+var xspeed = 20
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	Engine.max_fps = 60
+	
+	newsprite = Sprite2D.new()
+	newsprite.texture = load("res://img/gemme.png")
+	newsprite.scale = Vector2(5, 5)
+	newsprite.hframes = 2
+	newsprite.vframes = 3
+	newsprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST_WITH_MIPMAPS
+	posx = 100*cos(0)
+	posy = -100*sin(0)
+	newsprite.position = Vector2(posx, posy)
+	newpoly = Polygon2D.new()
+	newpoly.set_polygon(PackedVector2Array([Vector2(0+5*sin(0), 0+5*cos(0)),
+								  Vector2(posx+5*sin(0), posy+5*cos(0)),
+								  Vector2(posx-5*sin(0), posy-5*cos(0)),
+								  Vector2(0-5*sin(0),0-5*cos(0)),
+								]))
+	
+	newpoly.color = Color.RED
+	newpoly.z_index = -1
+	newbody = Area2D.new()
+	newbody.position = Vector2()
+	newbody.add_child(newpoly)
+	newbody.add_child(newsprite)
+	body.add_child(newbody)
+	newbody.rotation = rad
+	
+	newsprite2 = Sprite2D.new()
+	newsprite2.texture = load("res://img/gemme.png")
+	newsprite2.scale = Vector2(5, 5)
+	newsprite2.hframes = 2
+	newsprite2.vframes = 3
+	newsprite2.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST_WITH_MIPMAPS
+	posx2 = 100*cos(0)
+	posy2 = -100*sin(0)
+	newsprite2.position = Vector2(+posx2, +posy2)
+	newpoly2 = Polygon2D.new()
+	newpoly2.set_polygon(PackedVector2Array([Vector2(+5*sin(0), +5*cos(0)),
+								  Vector2(+posx2+5*sin(0), +posy2+5*cos(0)),
+								  Vector2(+posx2-5*sin(0), +posy2-5*cos(0)),
+								  Vector2(-5*sin(0),-5*cos(0)),
+								]))
+	
+	newpoly2.color = Color.RED
+	newpoly2.z_index = -1
+	newbody2 = Area2D.new()
+	newbody2.position = Vector2(posx, posy)
+	newbody2.add_child(newpoly2)
+	newbody2.add_child(newsprite2)
+	newbody.add_child(newbody2)
+	newbody2.rotation = rad2
+	print(posy, " ", posy2)
+	#difference = abs(- sin(newbody.rotation)*100) + abs(- sin(newbody2.rotation - newbody.rotation)*100)
+	difference = abs(- sinuscarré(newbody.rotation)*100) + abs(- sinuscarré(newbody2.rotation - newbody.rotation)*100)
+	difference = difference/2
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	rotating()
+	difference = abs(- sinuscarré(newbody.rotation)*100) + abs(- sinuscarré(newbody2.rotation - newbody.rotation)*100)
+	difference = difference/2
+	var differencecalcul = (-(difference/50)) + 3
+	body.position.y += gravity/differencecalcul
+	body.position.x += xspeed
+	xspeed -= 0.01/differencecalcul
+	if xspeed < 0: xspeed = 0
+	if xspeed > 50: xspeed = 50
+	if gravity < 50:
+		gravity += 0.2
+	else:
+		gravity = 50
+	if gravity < -30: gravity = -30
+	
+	$Camera2D.position = Vector2(body.position.x + 300, body.position.y)
+	$Control/CanvasLayer/fps.text = "yspeed = " + str(gravity/differencecalcul)
+	$Control/CanvasLayer/fps2.text = "difference = " + str(difference)
+	$Control/CanvasLayer/fps3.text = "xspeed = " + str(xspeed)
+	
+func rotating():
+	if isflexion:
+		if flexioncd < max_ampl :
+			newbody.rotation += flexionspeed
+			#if cos(newbody.rotation) >= 0:
+			var forcerotation = newbody.rotation - PI/2
+			var newforcex = cos(forcerotation) * flexionspeed * 10
+			var newforcey = sin(forcerotation) * flexionspeed * 30
+			xspeed += newforcex
+			gravity += newforcey
+			
+			newbody2.rotation += flexionspeed
+			flexioncd += flexionspeed
+			forcerotation = newbody2.rotation - newbody.rotation - PI/2
+			newforcex = cos(forcerotation) * flexionspeed * 10/4
+			newforcey = sin(forcerotation) * flexionspeed * 30/4
+			xspeed += newforcex
+			gravity += newforcey
+		else:
+			isflexion = false
+			flexioncd = 0
+			newbody.rotation = max_ampl + rad
+			newbody2.rotation = max_ampl + rad2
+	else:
+		if flexioncd < max_ampl :
+			newbody.rotation -= retourspeed
+			newbody2.rotation -= retourspeed
+			flexioncd += retourspeed
+			var forcerotation = newbody.rotation + PI/2
+			var newforcex = cos(forcerotation) * retourspeed * 10
+			var newforcey = sin(forcerotation) * retourspeed * 30
+			xspeed += newforcex
+			gravity += newforcey
+			
+			forcerotation = newbody2.rotation- newbody.rotation + PI/2
+			newforcex = cos(forcerotation) * flexionspeed * 10/4
+			newforcey = sin(forcerotation) * flexionspeed * 30/4
+			xspeed += newforcex
+			gravity += newforcey
+		else:
+			isflexion = true
+			flexioncd = 0
+			newbody.rotation = rad
+			newbody2.rotation = rad2
+			
+func sinuscarré(x):
+	var modulopi = fmod(abs(x),PI)
+	if modulopi <= PI/2 :
+		return (2/PI) * (modulopi)
+	else:
+		return (-2/PI) * (modulopi) + 2

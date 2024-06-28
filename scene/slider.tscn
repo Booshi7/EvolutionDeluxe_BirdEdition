@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://432jipew84fy"]
+
+[ext_resource type="Script" path="res://scripts/slider.gd" id="1_0apwj"]
+
+[node name="slider" type="Node2D"]
+script = ExtResource("1_0apwj")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]

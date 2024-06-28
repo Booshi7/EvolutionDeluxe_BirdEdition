@@ -1,0 +1,40 @@
+Ecran menu : titre, Nouvelle simulation, reprendre simulation
+	xNouvelle : génération 1000 oiso aléatoires
+	xReprendre : chargement des 1000 créatures dans un fichier, des stats dans un autre
+	xDécorer menu d'acceuil
+	
+	FINFINININI
+
+
+Ecran principal : 
+	xGénération de membres aléatoire complète
+	xCourbe générale (médianne, meilleur, pire, 90, 10)
+	xProportion d'espèces
+	xBoite de texte/slider pour sélectionner la gen des stats
+	xAffichage du meilleur, 500e, pire oiso (sans bouger).
+		xSi on clique : lancement de la simulation avec cet oiso
+	xBoutons de générations:
+		x(plusieurs oiso en même temps (100?), vitesse maximale)
+		x(récolte la distance de chacun au bout de 20-30 secondes ou si tout le monde mort)
+		x(malus si oiso trop bas ou vraiment trop haut)
+		x(à la fin: rangement du meilleur au pire)
+		x(on rajoute les stats aux tableau)
+		(on tue les pire, et reproduction des meilleurs)
+		(mutations des progénitures)
+		(sauvegarde des oiseaux (nouveau fichier ?))
+		x(actualisation avec nouvelle gen)
+		x1 Génération
+		xMultiple génération
+			xAvec pourcentages de génération, gen en cours, bouton pour stopper à la fin de la gen
+		xCase à cocher pour voir ou pas la génération:
+			x(peut etre switch automatiquement la cam vers le meilleur, + indique la dist du meilleur)
+			
+		xDécorer le menu
+		xPlacer les boutons
+		
+		
+Truc à rajouter:
+	xBoite indiquant la distance parcourue dans la simulation, et la hauteur
+	xTetes doiso
+	xArticulation
+	xMembres

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://2igd1mbcdyw7"]
+
+[ext_resource type="Script" path="res://scripts/mesure.gd" id="1_1lif3"]
+
+[node name="Mesure" type="Node2D"]
+z_index = 2
+script = ExtResource("1_1lif3")
+
+[node name="Distance" type="Node2D" parent="."]
+
+[node name="Hauteur" type="Node2D" parent="."]

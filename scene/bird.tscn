@@ -1,0 +1,66 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1s2glccy2qi1"]
+
+[ext_resource type="Script" path="res://scripts/bird.gd" id="1_08ice"]
+[ext_resource type="Texture2D" uid="uid://cyp7ksvjlgbsl" path="res://img/gemme.png" id="1_hfikg"]
+
+[node name="bird" type="Node2D"]
+process_mode = 1
+script = ExtResource("1_08ice")
+
+[node name="body" type="Area2D" parent="."]
+
+[node name="bodyimg" type="Sprite2D" parent="body"]
+texture_filter = 3
+scale = Vector2(5, 5)
+texture = ExtResource("1_hfikg")
+hframes = 2
+vframes = 3
+metadata/_edit_lock_ = true
+
+[node name="bodyimg2" type="Sprite2D" parent="body"]
+texture_filter = 3
+scale = Vector2(5, 5)
+texture = ExtResource("1_hfikg")
+hframes = 2
+vframes = 3
+metadata/_edit_lock_ = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Control"]
+
+[node name="fps" type="Label" parent="Control/CanvasLayer"]
+visible = false
+offset_left = 1.0
+offset_top = 24.0
+offset_right = 41.0
+offset_bottom = 47.0
+metadata/_edit_use_anchors_ = true
+
+[node name="fps2" type="Label" parent="Control/CanvasLayer"]
+visible = false
+offset_left = 2.0
+offset_top = 49.0
+offset_right = 42.0
+offset_bottom = 72.0
+metadata/_edit_use_anchors_ = true
+
+[node name="fps3" type="Label" parent="Control/CanvasLayer"]
+visible = false
+offset_left = 4.0
+offset_top = 70.0
+offset_right = 44.0
+offset_bottom = 93.0
+metadata/_edit_use_anchors_ = true
+
+[node name="fps4" type="Label" parent="Control/CanvasLayer"]
+visible = false
+offset_left = 4.0
+offset_top = 93.0
+offset_right = 44.0
+offset_bottom = 116.0
+metadata/_edit_use_anchors_ = true

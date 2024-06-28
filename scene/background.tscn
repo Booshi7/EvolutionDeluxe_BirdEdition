@@ -1,0 +1,85 @@
+[gd_scene load_steps=9 format=3 uid="uid://ci5hqqd3jv17h"]
+
+[ext_resource type="Texture2D" uid="uid://orysmh76eb7" path="res://img/bg.png" id="1_83c42"]
+[ext_resource type="Script" path="res://scripts/background.gd" id="1_tahuj"]
+[ext_resource type="Texture2D" uid="uid://bly5q52vqcy51" path="res://img/bgmer.png" id="2_xi8hq"]
+[ext_resource type="Texture2D" uid="uid://cq0oprvbgysgv" path="res://img/tofudusk_moon.png" id="3_luhap"]
+[ext_resource type="Texture2D" uid="uid://dvyvmetag85ob" path="res://img/montagnev2.png" id="4_gdwp1"]
+[ext_resource type="Texture2D" uid="uid://dlc5875lt74js" path="res://img/nuagesnoirs.png" id="6_f48an"]
+[ext_resource type="Texture2D" uid="uid://n738yivgh22l" path="res://img/nuagesblancs.png" id="7_egjnm"]
+[ext_resource type="Texture2D" uid="uid://0aip6h4i4ay1" path="res://img/noir fondu.png" id="8_l67ur"]
+
+[node name="background" type="Node2D"]
+process_priority = -1
+process_physics_priority = -1
+script = ExtResource("1_tahuj")
+
+[node name="ciel" type="Sprite2D" parent="."]
+z_index = -6
+position = Vector2(576, -660)
+scale = Vector2(1.175, 3.008)
+texture = ExtResource("1_83c42")
+
+[node name="mer" type="Sprite2D" parent="."]
+z_index = -4
+position = Vector2(567, 921)
+scale = Vector2(1.216, 1.176)
+texture = ExtResource("2_xi8hq")
+
+[node name="TofuduskMoon" type="Sprite2D" parent="."]
+z_index = -5
+texture_filter = 3
+position = Vector2(575, 255)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("3_luhap")
+
+[node name="TofuduskMoonmer" type="Sprite2D" parent="."]
+modulate = Color(0.823529, 0.854902, 0.756863, 1)
+z_index = -4
+texture_filter = 3
+position = Vector2(575, 387)
+scale = Vector2(2.5, -1.75)
+texture = ExtResource("3_luhap")
+
+[node name="groupenuage" type="Node2D" parent="."]
+
+[node name="Montagnev2" type="Sprite2D" parent="."]
+z_index = -1
+texture_filter = 3
+position = Vector2(625, 333)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("4_gdwp1")
+
+[node name="Montagnev3" type="Sprite2D" parent="."]
+z_index = -1
+texture_filter = 3
+position = Vector2(1870, 333)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("4_gdwp1")
+
+[node name="Nuagesnoirs" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.654902, 0.701961, 0.560784, 1)
+texture_filter = 3
+position = Vector2(257, 481)
+scale = Vector2(2.2, 2.2)
+texture = ExtResource("6_f48an")
+hframes = 4
+vframes = 2
+
+[node name="Nuagesblancs" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.654902, 0.701961, 0.560784, 1)
+texture_filter = 3
+position = Vector2(254, 480)
+scale = Vector2(2, 2)
+texture = ExtResource("7_egjnm")
+hframes = 4
+vframes = 2
+
+[node name="vingtsec" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 3
+position = Vector2(855, 630.5)
+scale = Vector2(4.3325, 9.875)
+texture = ExtResource("8_l67ur")

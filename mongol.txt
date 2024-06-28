@@ -1,0 +1,95 @@
+Si 2 boules alignées dans x : tombe moins lentement, plus elles sont différents sur y, plus la gravité fait effet.
+Si propulsion dans une direction, ajouter force perpendiculairement dans l'autre direction (+rotation?).
+
+extends Node2D
+var antisemite = 0
+var addition = 0
+
+func _ready():
+	for i in range(-5, 5):
+		if i%5 == 0:
+			creationx(i, 1) 
+		else:
+			creationx(i) 
+
+
+func _process(delta):
+	pass
+
+func déplacement(positionx, positiony):
+	position = Vector2(positionx, positiony)
+	$Distance.position.x = -positionx + antisemite
+	if -positionx + antisemite <= -1000:
+		addition += 1
+		for j in $Distance.get_children():
+			if j.position.x == -2250:
+				j.queue_free()
+				if j.get_child_count() == 0:
+					creationx(4)
+				else:
+					creationx(4, 1)
+			else:
+				j.position.x -= 450
+		antisemite += 450
+		
+
+func creationx(x, big = 0): #-1300, 1300
+	var xx = x*450
+	var newpoly = Polygon2D.new()
+	if big == 0:
+		newpoly.set_polygon(PackedVector2Array([Vector2(5, -10),
+								  Vector2(5, 10),
+								  Vector2(-5, 10),
+								  Vector2(-5, -10),
+								]))
+	else:
+		newpoly.set_polygon(PackedVector2Array([Vector2(5, -20),
+								  Vector2(5, 20),
+								  Vector2(-5, 20),
+								  Vector2(-5, -20),
+								]))
+		var newtext = Label.new()
+		newtext.text = str(x + addition)
+		newtext.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		newtext.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		newtext.label_settings = LabelSettings.new()
+		newtext.label_settings.font_size = 50
+		newtext.label_settings.font_color = "000000"
+		newtext.label_settings.outline_size = 5
+		newtext.size[0] = 500
+		newtext.position.y = - 80
+		newtext.position.x = -250
+		newpoly.add_child(newtext)
+		
+	newpoly.color = Color.BLACK
+	newpoly.position = Vector2(xx, 620)
+	$Distance.add_child(newpoly)
+
+
+
+
+
+
+
+
+
+
+
+if -positiony <= prochainy:
+		print(454545)
+		additiony += 1
+		if $Hauteur.get_children()[0].get_child_count() == 0:
+			creationy(4 + additiony)
+		else:
+			creationy(4 + additiony, 1)
+		$Hauteur.get_children()[0].queue_free()
+		prochainy += 313
+		
+	if -positiony >= prochainy + 900:
+		additiony -= 1
+		if $Hauteur.get_children()[0].get_child_count() == 0:
+			creationy(4 + additiony)
+		else:
+			creationy(4 + additiony, 1)
+		$Hauteur.get_children()[$Hauteur.get_child_count()-1].queue_free()
+		prochainy -= 313

@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dofnnycq3ji6u"]
+
+[ext_resource type="Texture2D" uid="uid://dkdeahrqv60dj" path="res://img/checkpoint.png" id="1_m52ni"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rjdfh"]
+size = Vector2(11.75, 6.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ce08w"]
+size = Vector2(1.46875, 9.3125)
+
+[node name="test" type="RigidBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 3
+scale = Vector2(8, 8)
+texture = ExtResource("1_m52ni")
+vframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, -29)
+scale = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_rjdfh")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-35, 27)
+scale = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_ce08w")
